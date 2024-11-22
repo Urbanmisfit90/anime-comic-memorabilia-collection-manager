@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+/* Example CSS for the button */
+.btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+

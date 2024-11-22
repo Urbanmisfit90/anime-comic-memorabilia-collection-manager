@@ -1,24 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';  // Import from 'react-dom/client'
-import './index.css'; // Import global CSS here
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
-// Ensure the 'root' element is found
-const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
-if (rootElement) {
-  // Create a root element for React 18
-  const root = ReactDOM.createRoot(rootElement);
-
-  // Render the app with the new API
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
-} else {
-  console.error('Root element not found.');
-}
 
 
 
