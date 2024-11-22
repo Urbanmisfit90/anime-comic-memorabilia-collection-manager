@@ -37,16 +37,38 @@
   }
 }
 
-/* Example CSS for the button */
+/* New styles for the input container */
+.input-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 20px; /* Add some space below the input area */
+}
+
+.input-container input {
+  margin-right: 10px; /* Add some space between the input and button */
+}
+
+/* Optional: Style the button and input for better appearance */
 .btn {
-  padding: 10px 20px;
+  padding: 5px 10px;
   background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: #45a049;
+.inventory-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
+.delete-btn {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 
 const App: React.FC = () => {
   const [inventoryItem, setInventoryItem] = useState('');
@@ -19,7 +20,7 @@ const App: React.FC = () => {
     <div className="App">
       <h1>Welcome to My Collection Manager</h1>
       <p>Manage your collections efficiently!</p>
-      <div>
+      <div className="input-container">
         <input
           type="text"
           value={inventoryItem}
