@@ -1,17 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CollectionPage from './pages/CollectionPage';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<CollectionPage />} />
-      </Routes>
-    </Router>
+    <div>
+      <h1>Welcome to My Collection Manager</h1>
+      <p>Learn React by managing your collections!</p>
+    </div>
   );
 };
 
 export default App;
+
 
 
