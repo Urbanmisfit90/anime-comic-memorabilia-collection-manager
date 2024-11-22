@@ -1,114 +1,43 @@
 import React, { useState } from 'react';
 
-interface CollectionItem {
-  id?: string;
-  name: string;
-  brand: string;
-  series: string;
-  character: string;
-  type: string;
-  condition: string;
-  tags: string[];
-  image?: File | null;
-}
-
 interface CollectionFormProps {
-  onSubmit: (item: CollectionItem) => void;
-  initialData?: CollectionItem;
+  onSubmit: (newItem: { name: string; description: string }) => void;
 }
 
-const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit, initialData }) => {
-  const [formData, setFormData] = useState<CollectionItem>(
-    initialData || {
-      name: '',
-      brand: '',
-      series: '',
-      character: '',
-      type: '',
-      condition: 'New',
-      tags: [],
-      image: null,
-    }
-  );
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
-    setFormData((prev) => ({ ...prev, image: file }));
-  };
+const CollectionForm: React.FC<CollectionFormProps> = ({ onSubmit }) => {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    if (name && description) {
+      onSubmit({ name, description });
+      setName('');
+      setDescription('');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow">
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Name:</label>
         <input
           type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
+          value={name}
+          onChange={e => setName(e.target.value)}
         />
       </div>
       <div>
-        <label>Brand:</label>
-        <input
-          type="text"
-          name="brand"
-          value={formData.brand}
-          onChange={handleChange}
+        <label>Description:</label>
+        <textarea
+          value={description}
+          onChange={e => setDescription(e.target.value)}
         />
       </div>
-      <div>
-        <label>Series:</label>
-        <input
-          type="text"
-          name="series"
-          value={formData.series}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Character:</label>
-        <input
-          type="text"
-          name="character"
-          value={formData.character}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Type:</label>
-        <input
-          type="text"
-          name="type"
-          value={formData.type}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Condition:</label>
-        <select name="condition" value={formData.condition} onChange={handleChange}>
-          <option value="New">New</option>
-          <option value="Mint">Mint</option>
-          <option value="Used">Used</option>
-        </select>
-      </div>
-      <div>
-        <label>Image:</label>
-        <input type="file" onChange={handleImageUpload} />
-      </div>
-      <button type="submit">Save Item</button>
+      <button type="submit">Add Item</button>
     </form>
   );
 };
 
 export default CollectionForm;
+
