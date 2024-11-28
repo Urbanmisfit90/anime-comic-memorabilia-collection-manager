@@ -8,3 +8,4 @@ const databases = new Databases(client);
 const storage = new Storage(client);
 
 export { client, databases, storage };
+
