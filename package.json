@@ -13,7 +13,6 @@
     "@types/testing-library__react": "^10.2.0",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
-    "appwrite": "^16.0.2",
     "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
